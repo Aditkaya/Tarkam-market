@@ -1,0 +1,9 @@
+/.env
+/vendor/
+/database/*.sqlite*
+/bootstrap/cache/*.php
+/storage/logs/*
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!/storage/**/.gitignore

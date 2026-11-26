@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#146b48">
+  <title>Masuk • Tarkam Market.ID</title>
+  <style>
+    :root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172b23; background: #f3f6f4; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 32px 20px; }
+    main { width: 100%; max-width: 440px; }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 11px; margin-bottom: 30px; font-size: 20px; font-weight: 750; letter-spacing: -.7px; }
+    .mark { width: 40px; height: 40px; background: #146b48; border-radius: 12px; display: grid; place-items: center; color: white; }
+    .mark svg { width: 24px; height: 24px; }
+    .brand span { color: #146b48; }
+    .card { background: white; border: 1px solid #e0e8e3; border-radius: 22px; padding: 38px; box-shadow: 0 12px 44px #19392a08; }
+    h1 { font-size: 28px; line-height: 1.2; letter-spacing: -.8px; margin: 0 0 10px; }
+    .intro { color: #68776f; font-size: 16px; line-height: 1.6; margin: 0 0 30px; }
+    label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 9px; }
+    .field { margin-bottom: 21px; }
+    input[type=email], input[type=password], input[type=text] { width: 100%; min-height: 50px; border: 1px solid #cfdad3; border-radius: 9px; padding: 12px 14px; background: #fff; font: inherit; color: #172b23; transition: border-color .15s, box-shadow .15s; }
+    input::placeholder { color: #8b968f; }
+    input:focus { outline: none; border-color: #146b48; box-shadow: 0 0 0 3px #146b4818; }
+    .password { position: relative; }
+    .password input { padding-right: 51px; }
+    .toggle { position: absolute; right: 5px; top: 5px; height: 40px; width: 40px; display: grid; place-items: center; border: 0; background: transparent; color: #68776f; cursor: pointer; border-radius: 6px; }
+    .toggle svg { width: 21px; height: 21px; }
+    .toggle:hover { background: #f0f5f2; }
+    .options { display: flex; align-items: center; margin: 0 0 26px; }
+    .remember { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 14px; font-weight: 400; color: #5c6d63; cursor: pointer; }
+    .remember input { width: 16px; height: 16px; margin: 0; accent-color: #146b48; }
+    .submit { width: 100%; min-height: 50px; border: 0; border-radius: 9px; background: #146b48; color: white; font: inherit; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .submit:hover { background: #105638; }
+    button:focus-visible { outline: 3px solid #73b896; outline-offset: 3px; }
+    .notice { font-size: 14px; line-height: 1.6; color: #68776f; border-top: 1px solid #edf1ee; margin: 26px 0 0; padding-top: 22px; text-align: center; }
+    .message { background: #edf6f0; border: 1px solid #cde4d5; border-radius: 8px; padding: 12px; font-size: 14px; line-height: 1.5; margin: 20px 0 0; }
+    .message[hidden] { display: none; }
+    footer { text-align: center; color: #7b8880; font-size: 14px; margin-top: 27px; }
+    @media (max-width: 480px) { .card { padding: 28px 24px; } h1 { font-size: 26px; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div><div>Tarkam <span>Market.ID</span></div></div>
+    <section class="card" aria-labelledby="login-title">
+      <h1 id="login-title">Selamat datang kembali</h1>
+      <p class="intro">Masuk untuk melanjutkan ke akun Anda.</p>
+      <form id="login-form">
+        <div class="field"><label for="email">Alamat email</label><input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="username" required></div>
+        <div class="field"><label for="password">Kata sandi</label><div class="password"><input id="password" name="password" type="password" placeholder="Masukkan kata sandi" autocomplete="current-password" required><button class="toggle" type="button" aria-label="Tampilkan kata sandi" aria-pressed="false" aria-controls="password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+        <div class="options"><label class="remember"><input type="checkbox" id="remember" name="remember">Ingat email saya</label></div>
+        <button class="submit" type="submit">Masuk</button>
+        <p class="message" id="message" role="status" hidden></p>
+      </form>
+      <p class="notice">Satu tempat untuk kebutuhan tim dan komunitas Anda.</p>
+    </section>
+    <footer>© <span id="year"></span> Tarkam Market.ID</footer>
+  </main>
+  <script>
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const remember = document.getElementById('remember');
+    const toggle = document.querySelector('.toggle');
+    document.getElementById('year').textContent = new Date().getFullYear();
+    try {
+      const savedEmail = localStorage.getItem('tarkam-email');
+      if (savedEmail) { email.value = savedEmail; remember.checked = true; }
+    } catch (_) { /* Form remains usable when browser storage is unavailable. */ }
+    toggle.addEventListener('click', () => {
+      const visible = password.type === 'password';
+      password.type = visible ? 'text' : 'password';
+      toggle.setAttribute('aria-label', visible ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi');
+      toggle.setAttribute('aria-pressed', String(visible));
+    });
+    document.getElementById('login-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      try {
+        if (remember.checked) localStorage.setItem('tarkam-email', email.value.trim());
+        else localStorage.removeItem('tarkam-email');
+      } catch (_) { /* Storage is optional. */ }
+      const message = document.getElementById('message');
+      message.textContent = 'Ini adalah demo halaman login. Hubungkan ke layanan autentikasi untuk masuk ke akun Anda.';
+      message.hidden = false;
+    });
+  </script>
+</body>
+</html>
