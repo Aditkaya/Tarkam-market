@@ -13,7 +13,7 @@ return [
     'cookie' => 'tarkam_session',
     'path' => '/',
     'domain' => null,
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', env('APP_ENV', 'production') === 'production'),
     'http_only' => true,
     'same_site' => 'lax',
     'partitioned' => false,

@@ -19,7 +19,7 @@
         @if (session('status'))<p class="message" role="status">{{ session('status') }}</p>@endif
         <div class="field"><label for="email">Alamat email</label><input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="username" value="{{ old('email') }}" required></div>
         <div class="field"><label for="password">Kata sandi</label><div class="password"><input id="password" name="password" type="password" placeholder="Masukkan kata sandi" autocomplete="current-password" required><button class="toggle" type="button" aria-label="Tampilkan kata sandi" aria-pressed="false" aria-controls="password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
-        <div class="options"><label class="remember"><input type="checkbox" id="remember" name="remember" value="1" @checked(old('remember'))>Ingat saya</label></div>
+        <div class="options"><label class="remember"><input type="checkbox" id="remember" name="remember" value="1" @checked(old('remember'))>Ingat saya</label><a href="{{ route('password.request') }}">Lupa kata sandi?</a></div>
         <button class="submit" type="submit">Masuk</button>
       </form>
       <p class="notice">Satu tempat untuk kebutuhan tim dan komunitas Anda.</p>

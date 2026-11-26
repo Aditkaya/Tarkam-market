@@ -43,6 +43,7 @@ class AuthController
         }
         RateLimiter::clear($key);
         $request->session()->regenerate();
+        $request->session()->put('auth_password_fingerprint', hash('sha256', Auth::user()->getAuthPassword()));
         return redirect()->intended(route('dashboard'));
     }
 

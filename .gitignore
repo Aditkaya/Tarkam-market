@@ -1,5 +1,6 @@
 /.env
 /vendor/
+/.phpunit.result.cache
 /database/*.sqlite*
 /bootstrap/cache/*.php
 /storage/logs/*
